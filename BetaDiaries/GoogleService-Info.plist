@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>348066029665-tn610gle07md89h17pu3fk33b98tj36d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.348066029665-tn610gle07md89h17pu3fk33b98tj36d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDehgzL_dQIDU7pR7gTKUnezwqidJvUqDg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>348066029665</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>terry.BetaDiaries</string>
+	<key>PROJECT_ID</key>
+	<string>betadiaries-81355</string>
+	<key>STORAGE_BUCKET</key>
+	<string>betadiaries-81355.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:348066029665:ios:8e62bc54464c119d200a20</string>
+	<key>DATABASE_URL</key>
+	<string>https://betadiaries-81355.firebaseio.com</string>
+</dict>
+</plist>
