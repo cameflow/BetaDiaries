@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		FA46BA962516E28F00471541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA46BA952516E28F00471541 /* Assets.xcassets */; };
 		FA46BA992516E28F00471541 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA46BA972516E28F00471541 /* LaunchScreen.storyboard */; };
 		FA46BAA22516E2C200471541 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA46BAA12516E2C200471541 /* GoogleService-Info.plist */; };
+		FAB0BB91251D5E7400B7C9AB /* AddBetaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0BB90251D5E7400B7C9AB /* AddBetaVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FA46BA982516E28F00471541 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA46BA9A2516E28F00471541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA46BAA12516E2C200471541 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAB0BB90251D5E7400B7C9AB /* AddBetaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBetaVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +52,6 @@
 				5ACDBA90BE3E04635C213F0B /* Pods-BetaDiaries.debug.xcconfig */,
 				88FEA77A88224E25139287F0 /* Pods-BetaDiaries.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,6 +92,7 @@
 				FA46BA972516E28F00471541 /* LaunchScreen.storyboard */,
 				FA46BA9A2516E28F00471541 /* Info.plist */,
 				FA46BAA12516E2C200471541 /* GoogleService-Info.plist */,
+				FAB0BB90251D5E7400B7C9AB /* AddBetaVC.swift */,
 			);
 			path = BetaDiaries;
 			sourceTree = "<group>";
@@ -210,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB0BB91251D5E7400B7C9AB /* AddBetaVC.swift in Sources */,
 				FA46BA912516E28D00471541 /* ViewController.swift in Sources */,
 				FA46BA8D2516E28D00471541 /* AppDelegate.swift in Sources */,
 				FA46BA8F2516E28D00471541 /* SceneDelegate.swift in Sources */,
