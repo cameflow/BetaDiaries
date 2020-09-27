@@ -6,19 +6,41 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ViewController: UIViewController{
 
     
     
-    let tableView = UITableView()
+    let tableView       = UITableView()
     var betas:[String]  = []
-    var counter = 0
+    var counter         = 0
+    let ref             = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
-        configureTableView()
+        configureTableView()        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
+    
+        
+    
+    func getData() {
+        betas.removeAll()
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as! [String:[String:Any]]
+            for (_, value) in data {
+                self.betas.append(value["title"] as! String)
+            }
+            self.betas.sort()
+            self.tableView.reloadData()
+        }
+        
     }
     
     private func configureVC() {
@@ -39,12 +61,9 @@ class ViewController: UIViewController{
     }
     
     @objc func addBeta() {
-        print("Betta Added")
-        betas.append("Beta # \(counter)")
-        counter += 1
-        tableView.reloadData()
         let destVC = AddBetaVC()
         let navController = UINavigationController(rootViewController: destVC)
+        navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
     }
 

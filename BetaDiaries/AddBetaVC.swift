@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AddBetaVC: UIViewController {
     
     let betaName        = UITextField()
     let betaDescription = UITextView()
+    let ref             = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class AddBetaVC: UIViewController {
         configureBetaDescription()
 
     }
+    
     
     private func configureVC() {
         view.backgroundColor                =   .systemBackground
@@ -81,8 +84,13 @@ class AddBetaVC: UIViewController {
     }
     
     @objc func addBeta(){
-        print(betaName.text ?? "No title")
-        print(betaDescription.text ?? "No description")
+        
+        guard betaName.text != nil else { return }
+        guard betaDescription.text != nil else { return }
+        
+        ref.childByAutoId().setValue(["title": betaName.text!, "description": betaDescription.text!])
+        
+        
         dismiss(animated: true)
     }
     
