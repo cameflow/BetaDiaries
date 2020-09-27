@@ -8,11 +8,16 @@
 import UIKit
 import FirebaseDatabase
 
+protocol ModalHandler {
+  func modalDismissed()
+}
+
 class AddBetaVC: UIViewController {
     
     let betaName        = UITextField()
     let betaDescription = UITextView()
     let ref             = Database.database().reference()
+    var delegate: ModalHandler?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +96,11 @@ class AddBetaVC: UIViewController {
         ref.childByAutoId().setValue(["title": betaName.text!, "description": betaDescription.text!])
         
         
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            if let del = self.delegate {
+                del.modalDismissed()
+            }
+        }
     }
     
 

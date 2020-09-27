@@ -61,11 +61,14 @@ class ViewController: UIViewController{
     }
     
     @objc func addBeta() {
+        
         let destVC = AddBetaVC()
+        destVC.delegate = self
         let navController = UINavigationController(rootViewController: destVC)
-        navController.modalPresentationStyle = .fullScreen
+        
         present(navController, animated: true)
     }
+    
 
 
 }
@@ -82,5 +85,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-
 }
+
+extension ViewController: ModalHandler {
+    func modalDismissed() {
+        getData()
+    }
+}
+
+
+
+
