@@ -13,7 +13,7 @@ class ViewController: UIViewController{
     
     
     let tableView       = UITableView()
-    var betas:[String]  = []
+    var betas:[Beta]  = []
     var counter         = 0
     let ref             = Database.database().reference()
     
@@ -33,9 +33,11 @@ class ViewController: UIViewController{
     func getData() {
         betas.removeAll()
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            let data = snapshot.value as! [String:[String:Any]]
-            for (_, value) in data {
-                self.betas.append(value["title"] as! String)
+            let data = snapshot.value as! [String:[String:String]]
+            
+            for d in data {
+                let tmpBeta = Beta(id: d.key, name: d.value["title"]! , description: d.value["description"]!)
+                self.betas.append(tmpBeta)
             }
             self.betas.sort()
             self.tableView.reloadData()
@@ -52,10 +54,10 @@ class ViewController: UIViewController{
     
     private func configureTableView() {
         view.addSubview(tableView)
-        tableView.frame = view.bounds
-        tableView.rowHeight = 50
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.frame         = view.bounds
+        tableView.rowHeight     = 50
+        tableView.delegate      = self
+        tableView.dataSource    = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BetaCell")
     }
@@ -81,8 +83,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BetaCell")!
-        cell.textLabel?.text = betas[indexPath.row]
+        cell.textLabel?.text    = betas[indexPath.row].name
+        cell.accessoryType      = .disclosureIndicator
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destVc = BetaDetailVC(beta: betas[indexPath.row])
+        navigationController?.pushViewController(destVc, animated: true)
     }
     
 }
