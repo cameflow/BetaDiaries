@@ -16,6 +16,7 @@
 		FA46BAA22516E2C200471541 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA46BAA12516E2C200471541 /* GoogleService-Info.plist */; };
 		FA5C0C682523FB0B00D56B61 /* Beta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C0C672523FB0B00D56B61 /* Beta.swift */; };
 		FA5C0C6E252401DB00D56B61 /* BetaDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C0C6D252401DB00D56B61 /* BetaDetailVC.swift */; };
+		FA7DBE12252A4B8E004962F2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DBE11252A4B8E004962F2 /* Location.swift */; };
 		FAB0BB91251D5E7400B7C9AB /* AddBetaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0BB90251D5E7400B7C9AB /* AddBetaVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		FA46BAA12516E2C200471541 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA5C0C672523FB0B00D56B61 /* Beta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beta.swift; sourceTree = "<group>"; };
 		FA5C0C6D252401DB00D56B61 /* BetaDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaDetailVC.swift; sourceTree = "<group>"; };
+		FA7DBE11252A4B8E004962F2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FAB0BB90251D5E7400B7C9AB /* AddBetaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBetaVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5C0C672523FB0B00D56B61 /* Beta.swift */,
+				FA7DBE11252A4B8E004962F2 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				FA46BA8D2516E28D00471541 /* AppDelegate.swift in Sources */,
 				FA46BA8F2516E28D00471541 /* SceneDelegate.swift in Sources */,
 				FA5C0C6E252401DB00D56B61 /* BetaDetailVC.swift in Sources */,
+				FA7DBE12252A4B8E004962F2 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
