@@ -18,16 +18,15 @@ class AddBetaVC: UIViewController {
     let betaDescription = UITextView()
     let isSlabLabel     = UILabel()
     var sportSelector   = UISegmentedControl()
+    var gradeSelector   = UISegmentedControl()
     let isSlabSwitch    = UISwitch()
     let gradePicker     = UIPickerView()
     let ref             = Database.database().reference()
-    
-    let americanGrades  = ["N/A","V0","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15"]
-    let europeanGrades  = ["N/A","4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+","9A"]
+    var segments        = ["V-scale", "Fontainebleau"]
+    let americanGrades  = [["V0","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15"], ["5.10a","5.10b","5.10c","5.10d","5.11a","5.11b","5.11c","5.11d","5.12a","5.12b","5.12c","5.12d","5.13a","5.13b","5.13c","5.13d","5.14a","5.14b","5.14c","5.14d","5.15a","5.15b","5.15c","5.15d"]]
+    let europeanGrades  = [["4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+","9A"], ["6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+","9A","9A+","9B","9B+","9C"]]
     
     var delegate: ModalHandler?
-    
-    
     
 
     override func viewDidLoad() {
@@ -35,6 +34,7 @@ class AddBetaVC: UIViewController {
         configureVC()
         configureBetaName()
         configureSportSelector()
+        configureGradeSelector()
         configureIsSlab()
         configureGradePicker()
         configureBetaDescription()
@@ -79,10 +79,9 @@ class AddBetaVC: UIViewController {
         let segments = ["Boulder", "Lead"]
         
         sportSelector                            = UISegmentedControl(items: segments)
-        sportSelector.selectedSegmentTintColor   = .systemGreen
         sportSelector.backgroundColor            = .secondarySystemBackground
         sportSelector.selectedSegmentIndex       = 0
-        sportSelector.addTarget(self, action: #selector(reloadPicker), for: .valueChanged)
+        sportSelector.addTarget(self, action: #selector(changeGradingLabels), for: .valueChanged)
         
         sportSelector.translatesAutoresizingMaskIntoConstraints  = false
         view.addSubview(sportSelector)
@@ -91,6 +90,35 @@ class AddBetaVC: UIViewController {
             sportSelector.topAnchor.constraint(equalTo: betaName.bottomAnchor, constant: 20),
             sportSelector.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             sportSelector.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    @objc func changeGradingLabels(){
+        if sportSelector.selectedSegmentIndex == 0 {
+            gradeSelector.setTitle("V-scale", forSegmentAt: 0)
+            gradeSelector.setTitle("Fontainebleau", forSegmentAt: 1)
+        } else {
+            gradeSelector.setTitle("YDS", forSegmentAt: 0)
+            gradeSelector.setTitle("French", forSegmentAt: 1)
+        }
+        gradePicker.reloadAllComponents()
+    }
+    
+    private func configureGradeSelector() {
+        let segments = ["V-scale", "Fontainebleau"]
+        
+        gradeSelector                            = UISegmentedControl(items: segments)
+        gradeSelector.backgroundColor            = .secondarySystemBackground
+        gradeSelector.selectedSegmentIndex       = 0
+        gradeSelector.addTarget(self, action: #selector(reloadPicker), for: .valueChanged)
+        
+        gradeSelector.translatesAutoresizingMaskIntoConstraints  = false
+        view.addSubview(gradeSelector)
+        
+        NSLayoutConstraint.activate([
+            gradeSelector.topAnchor.constraint(equalTo: sportSelector.bottomAnchor, constant: 20),
+            gradeSelector.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            gradeSelector.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
     
@@ -107,7 +135,7 @@ class AddBetaVC: UIViewController {
         isSlabLabel.text = "Slab:"
         
         NSLayoutConstraint.activate([
-            isSlabLabel.topAnchor.constraint(equalTo: sportSelector.bottomAnchor, constant: 20),
+            isSlabLabel.topAnchor.constraint(equalTo: gradeSelector.bottomAnchor, constant: 20),
             isSlabLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             isSlabLabel.widthAnchor.constraint(equalToConstant: 50),
             isSlabLabel.heightAnchor.constraint(equalToConstant: 30),
@@ -184,18 +212,18 @@ extension AddBetaVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if sportSelector.selectedSegmentIndex == 0 {
-            return americanGrades.count
+        if gradeSelector.selectedSegmentIndex == 0 {
+            return americanGrades[sportSelector.selectedSegmentIndex].count
         } else {
-            return europeanGrades.count
+            return europeanGrades[sportSelector.selectedSegmentIndex].count
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if sportSelector.selectedSegmentIndex == 0 {
-            return americanGrades[row]
+        if gradeSelector.selectedSegmentIndex == 0 {
+            return americanGrades[sportSelector.selectedSegmentIndex][row]
         } else {
-            return europeanGrades[row]
+            return europeanGrades[sportSelector.selectedSegmentIndex][row]
         }
     }
 }
