@@ -89,7 +89,7 @@ class AddBetaVC: UIViewController {
         NSLayoutConstraint.activate([
             sportSelector.topAnchor.constraint(equalTo: betaName.bottomAnchor, constant: 20),
             sportSelector.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            sportSelector.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            sportSelector.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -20)
         ])
     }
     
@@ -118,7 +118,7 @@ class AddBetaVC: UIViewController {
         NSLayoutConstraint.activate([
             gradeSelector.topAnchor.constraint(equalTo: sportSelector.bottomAnchor, constant: 20),
             gradeSelector.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            gradeSelector.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            gradeSelector.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -20)
         ])
     }
     
@@ -153,9 +153,9 @@ class AddBetaVC: UIViewController {
         gradePicker.dataSource   = self
         
         NSLayoutConstraint.activate([
-            gradePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            gradePicker.leadingAnchor.constraint(equalTo: gradeSelector.trailingAnchor, constant: 20),
             gradePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            gradePicker.topAnchor.constraint(equalTo: isSlabLabel.bottomAnchor, constant: 20)
+            gradePicker.topAnchor.constraint(equalTo: betaName.bottomAnchor, constant: 20)
             
         ])
     }
